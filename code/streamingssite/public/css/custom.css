@@ -1,26 +1,46 @@
 /* Algemene stijl */
 body {
     background-image: url('/images/League-of-Legends-lol-roles-support-adc-mid-jungle-top-champions.jpeg'); /* Achtergrondafbeelding */
+    background-size: cover; /* Zorg ervoor dat de achtergrond de hele pagina bedekt */
+    background-position: center; /* Plaats de achtergrond in het midden */
+    height: 100vh; /* Hiermee wordt de achtergrond over de volledige hoogte van de viewport weergegeven */
+    margin: 0; /* Verwijder de standaardmarges */
+    display: flex; /* Maak gebruik van flexbox voor het centraal uitlijnen */
+    justify-content: center; /* Centreer de inhoud horizontaal */
+    align-items: center; /* Centreer de inhoud verticaal */
+    color: whitesmoke;
+    font-family: 'Fjalla One', sans-serif;
 }
 
-/* Stijl voor het formulier en de kaart */
 .card {
-    margin-top: 50px; /* Ruimte bovenaan de kaart */
-    /* Achtergrondafbeelding */
-    background-size: cover; /* Zorg ervoor dat de achtergrond de hele kaart bedekt */
-    background-position: center; /* Plaats de achtergrond in het midden */
+    margin-top: -30px; /* Ruimte bovenaan de kaart */
+
     border: none; /* Verwijder de rand van de kaart */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Voeg een subtiele schaduw toe */
+    height: auto; /* Automatische hoogte voor flexibiliteit */
+    width: 600px;
+
+    padding: 30px; /* Voeg padding toe rondom de kaart */
 }
 
 .card-header {
     background-color: #191d28; /* Achtergrondkleur van de kaartkop */
     color: #fff; /* Tekstkleur van de kaartkop */
     border-bottom: none; /* Verwijder de onderste rand van de kaartkop */
+    padding: 20px 30px; /* Voeg padding toe boven en onder de kaartkop */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .card-body {
     background-color: #202633; /* Achtergrondkleur van de kaartinhoud */
+    padding: 30px; /* Voeg padding toe rondom de kaartinhoud */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Ruimte tussen formuliervelden */
 }
 
 /* Stijl voor de invoervelden en labels */
@@ -39,17 +59,43 @@ body {
 /* Stijl voor de knoppen */
 .btn-primary {
     background-color: #7289da; /* Achtergrondkleur van de knoppen */
-    border-color: #7289da; /* Randkleur van de knoppen */
+    padding: 10px;
+    border: 2px solid transparent; /* Zorg ervoor dat de rand onzichtbaar is in de normale toestand */
+    border-radius: 5px;
+    color: white;
+    width: 200px;
+    font-size: 14pt;
+    margin-left: 60%;
+    font-family: "roboto",sans-serif;
+    cursor: pointer;
+    position: relative; /* Zorg ervoor dat de gepositioneerde elementen binnen de knop relatief zijn aan de knop zelf */
+    overflow: hidden; /* Verberg de inhoud die buiten de grenzen van de knop valt */
 }
 
-.btn-primary:hover {
-    background-color: #5b6eae; /* Achtergrondkleur van de knoppen wanneer er met de muis overheen wordt gegaan */
-    border-color: #5b6eae; /* Randkleur van de knoppen wanneer er met de muis overheen wordt gegaan */
-    color: #fff; /* Tekstkleur van de knoppen wanneer er met de muis overheen wordt gegaan */
+.btn-primary::before {
+    content: ''; /* Voeg een pseudo-element toe voor de animatie */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparante achtergrondkleur voor de animatie */
+    transition: all 0.5s ease; /* Voeg een overgang toe voor een soepele animatie */
+    border-radius: 50%; /* Maak het pseudo-element rond */
+    z-index: 0; /* Zorg ervoor dat het pseudo-element onder de inhoud van de knop ligt */
+    transform: translate(-50%, -50%); /* Centreer het pseudo-element */
 }
+
+.btn-primary:hover::before {
+    width: 0; /* Maak het pseudo-element kleiner bij het zweven */
+    height: 0; /* Maak het pseudo-element kleiner bij het zweven */
+}
+
 
 /* Stijl voor de foutmeldingen */
 .invalid-feedback {
     display: block; /* Zorg ervoor dat de foutmeldingen blokken zijn */
     color: #dc3545; /* Tekstkleur van de foutmeldingen */
 }
+
+

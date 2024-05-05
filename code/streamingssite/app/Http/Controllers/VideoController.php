@@ -24,7 +24,7 @@ class VideoController extends Controller
             'title' => 'required',
             'description' => 'required',
             'video_url' => 'required|url',
-            // Validaties
+            'role' => 'required', // Validatie voor de rol
         ]);
 
         Video::create($request->all());
@@ -33,11 +33,16 @@ class VideoController extends Controller
             ->with('success', 'Video created successfully.');
     }
 
+
     public function show($id)
     {
         $video = Video::findOrFail($id);
-        return view('videos.show', compact('video'));
+        $championTierList = $video->championTierList;
+
+        // Geeft de tier list mee aan de view
+        return view('videos.show', compact('video', 'championTierList'));
     }
+
 
     public function edit($id)
     {
@@ -68,4 +73,6 @@ class VideoController extends Controller
         return redirect()->route('videos.index')
             ->with('success', 'Video deleted successfully.');
     }
+
+
 }

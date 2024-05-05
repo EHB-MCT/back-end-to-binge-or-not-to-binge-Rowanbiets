@@ -24,6 +24,16 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Opslaan</button>
                         </form>
+                        <div class="form-group">
+                            <label for="role">Rol:</label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="Top">Top</option>
+                                <option value="Jungle">Jungle</option>
+                                <option value="Mid">Mid</option>
+                                <option value="ADC">ADC</option>
+                                <option value="Support">Support</option>
+                            </select>
+                        </div>
 
                     </div>
                 </div>
