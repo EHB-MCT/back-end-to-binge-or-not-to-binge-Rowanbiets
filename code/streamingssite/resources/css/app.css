@@ -1,0 +1,49 @@
+
+
+/* Stijl voor het formulier en de kaart */
+.card {
+    margin-top: 50px; /* Aanpassen aan jouw voorkeur */
+}
+
+.card-header {
+    background-color: #191d28; /* Aanpassen aan jouw voorkeur */
+    color: #fff; /* Aanpassen aan jouw voorkeur */
+}
+
+.card-body {
+    background-color: #202633; /* Aanpassen aan jouw voorkeur */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Aanpassen aan jouw voorkeur */
+}
+
+/* Stijl voor de invoervelden en labels */
+.form-control {
+    background-color: #2c3445; /* Aanpassen aan jouw voorkeur */
+    border: 1px solid #334258; /* Aanpassen aan jouw voorkeur */
+    color: #fff; /* Aanpassen aan jouw voorkeur */
+}
+
+.form-control:focus {
+    background-color: #39425d; /* Aanpassen aan jouw voorkeur */
+    border: 1px solid #53688c; /* Aanpassen aan jouw voorkeur */
+}
+
+/* Stijl voor de knoppen */
+.btn-primary {
+    background-color: #7289da; /* Aanpassen aan jouw voorkeur */
+    border-color: #7289da; /* Aanpassen aan jouw voorkeur */
+}
+
+.btn-primary:hover {
+    background-color: #5b6eae; /* Aanpassen aan jouw voorkeur */
+    border-color: #5b6eae; /* Aanpassen aan jouw voorkeur */
+    color: #fff; /* Aanpassen aan jouw voorkeur */
+}
+
+/* Stijl voor de foutmeldingen */
+.invalid-feedback {
+    display: block;
+    color: #dc3545; /* Aanpassen aan jouw voorkeur */
+}
