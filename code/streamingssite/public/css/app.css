@@ -1,5 +1,6 @@
 /* Algemene stijl */
 body {
+
     background-color: #f3f4f6; /* Achtergrondkleur */
     font-family: Arial, sans-serif; /* Lettertype */
 }
@@ -17,6 +18,7 @@ body {
 .card-header {
     background-color: #007bff; /* Achtergrondkleur van de kaartkop */
     color: #fff; /* Tekstkleur van de kaartkop */
+    text-align: center;
     padding: 15px; /* Ruimte rondom de kaartkop */
     border-top-left-radius: 5px; /* Afgeronde hoeken */
     border-top-right-radius: 5px; /* Afgeronde hoeken */

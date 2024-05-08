@@ -13,13 +13,11 @@ body {
 }
 
 .card {
-    margin-top: -30px; /* Ruimte bovenaan de kaart */
-
+    margin-top: 30px; /* Ruimte bovenaan de kaart */
     border: none; /* Verwijder de rand van de kaart */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Voeg een subtiele schaduw toe */
     height: auto; /* Automatische hoogte voor flexibiliteit */
-    width: 600px;
-
+    width: 700px;
     padding: 30px; /* Voeg padding toe rondom de kaart */
 }
 
@@ -34,7 +32,7 @@ body {
 
 .card-body {
     background-color: #202633; /* Achtergrondkleur van de kaartinhoud */
-    padding: 30px; /* Voeg padding toe rondom de kaartinhoud */
+    padding: 50px; /* Voeg padding toe rondom de kaartinhoud */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -65,6 +63,7 @@ body {
     color: white;
     width: 200px;
     font-size: 14pt;
+    text-decoration: none;
     margin-left: 60%;
     font-family: "roboto",sans-serif;
     cursor: pointer;

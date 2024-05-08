@@ -9,7 +9,10 @@
 
                     <div class="card-body">
                         <p><strong>Beschrijving:</strong> {{ $video->description }}</p>
-                        <p><strong>Video URL:</strong> <a href="{{ $video->video_url }}" target="_blank">{{ $video->video_url }}</a></p>
+                        <!-- Voeg de iframe toe om de video weer te geven -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{ $video->video_url }}" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>

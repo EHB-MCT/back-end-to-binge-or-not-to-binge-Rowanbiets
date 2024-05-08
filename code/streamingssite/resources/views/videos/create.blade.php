@@ -35,6 +35,16 @@
                             </select>
                         </div>
 
+                        <!-- Hier wordt de video getoond met een iframe -->
+
+                        <form action="{{ route('videos.store') }}" method="POST">
+                            <!-- Formuliervelden voor titel, beschrijving, video-URL, etc. -->
+                        </form>
+
+                        <!-- Sectie om de video weer te geven -->
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div>

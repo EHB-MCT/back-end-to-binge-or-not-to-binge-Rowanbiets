@@ -15,8 +15,10 @@ class VideoController extends Controller
 
     public function create()
     {
-        return view('videos.create');
+        $video = new Video(); // Maak een nieuw Video-model aan
+        return view('videos.create', compact('video'));
     }
+
 
     public function store(Request $request)
     {
@@ -24,14 +26,23 @@ class VideoController extends Controller
             'title' => 'required',
             'description' => 'required',
             'video_url' => 'required|url',
-            'role' => 'required', // Validatie voor de rol
+            'role' => 'required',
+            // And any other validation rules you may need
         ]);
 
-        Video::create($request->all());
+        $video = new Video([
+            'title' => $request->title,
+            'description' => $request->description,
+            'video_url' => $request->video_url,
+            'role' => $request->role,
+        ]);
+
+        $video->save();
 
         return redirect()->route('videos.index')
             ->with('success', 'Video created successfully.');
     }
+
 
 
     public function show($id)

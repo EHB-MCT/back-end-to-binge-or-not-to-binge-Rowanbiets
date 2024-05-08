@@ -11,7 +11,7 @@ class Video extends Model
 
     public function championTierList()
     {
-        return $this->belongsTo(ChampionTierList::class);
+        return $this->hasOne(ChampionTierList::class);
     }
 
     public function roles()
