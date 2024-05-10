@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    protected $fillable = ['title', 'description', 'video_url'];
+    protected $fillable = ['title', 'description', 'video_url','role'];
 
 
     public function championTierList()

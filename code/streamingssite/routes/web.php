@@ -36,7 +36,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 
 // De rootroute kan apart worden gedefinieerd
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VideoController::class, 'index'])
+    ->name('welcome');
 

@@ -23,7 +23,7 @@ class LoginController extends Controller
         // Probeer de gebruiker in te loggen
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // Als de inloggegevens correct zijn, doorsturen naar de juiste locatie
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         } else {
             // Als de inloggegevens onjuist zijn, doorsturen met een foutmelding
             return back()->withInput($request->only('email', 'remember'))->withErrors(['email' => 'Deze inloggegevens komen niet overeen met onze gegevens']);

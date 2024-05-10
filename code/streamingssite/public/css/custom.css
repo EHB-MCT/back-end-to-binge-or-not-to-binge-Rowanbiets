@@ -1,6 +1,6 @@
 /* Algemene stijl */
 body {
-    background-image: url('/images/League-of-Legends-lol-roles-support-adc-mid-jungle-top-champions.jpeg'); /* Achtergrondafbeelding */
+    background-image: url('images/League-of-Legends-lol-roles-support-adc-mid-jungle-top-champions.jpeg'); /* Achtergrondafbeelding */
     background-size: cover; /* Zorg ervoor dat de achtergrond de hele pagina bedekt */
     background-position: center; /* Plaats de achtergrond in het midden */
     height: 100vh; /* Hiermee wordt de achtergrond over de volledige hoogte van de viewport weergegeven */
@@ -27,6 +27,7 @@ body {
     border-bottom: none; /* Verwijder de onderste rand van de kaartkop */
     padding: 20px 30px; /* Voeg padding toe boven en onder de kaartkop */
     border-top-left-radius: 10px;
+
     border-top-right-radius: 10px;
 }
 

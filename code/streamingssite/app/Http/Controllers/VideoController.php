@@ -9,9 +9,11 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $videos = Video::all();
-        return view('videos.index', compact('videos'));
+        $videos = Video::all(); // Alle video's ophalen
+        return view('welcome', compact('videos'));
     }
+
+
 
     public function create()
     {
@@ -26,15 +28,14 @@ class VideoController extends Controller
             'title' => 'required',
             'description' => 'required',
             'video_url' => 'required|url',
-            'role' => 'required',
-            // And any other validation rules you may need
+            // Remove 'role' validation
         ]);
 
         $video = new Video([
             'title' => $request->title,
             'description' => $request->description,
             'video_url' => $request->video_url,
-            'role' => $request->role,
+            // Remove 'role' assignment
         ]);
 
         $video->save();
@@ -42,6 +43,7 @@ class VideoController extends Controller
         return redirect()->route('videos.index')
             ->with('success', 'Video created successfully.');
     }
+
 
 
 

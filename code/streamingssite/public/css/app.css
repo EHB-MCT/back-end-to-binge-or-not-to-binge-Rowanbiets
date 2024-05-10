@@ -1,7 +1,7 @@
 /* Algemene stijl */
 body {
 
-    background-color: #f3f4f6; /* Achtergrondkleur */
+    background-color: rgba(0, 0, 0, 0.73); /* Achtergrondkleur */
     font-family: Arial, sans-serif; /* Lettertype */
 }
 
