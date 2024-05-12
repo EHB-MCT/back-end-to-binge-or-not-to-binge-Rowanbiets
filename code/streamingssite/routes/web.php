@@ -7,10 +7,30 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\JungleController;
+use App\Http\Controllers\MidController;
+use App\Http\Controllers\ADCController;
+use App\Http\Controllers\SupportController;
+use App\Http\Controllers\TopController;
+
+
+// Route voor het weergeven van de top champions
+Route::get('/top', [TopController::class, 'index'])->name('top.index');
+
+
+//Routes voor de Roles pagina's
+Route::get('/top', [TopController::class, 'index'])->name('top.index');
+Route::get('/jungle', [JungleController::class, 'index'])->name('jungle.index');
+Route::get('/mid', [MidController::class, 'index'])->name('mid.index');
+Route::get('/adc', [ADCController::class, 'index'])->name('adc.index');
+Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+
 
 // Definieer de resource-routes voor video's en rollen
 Route::resource('videos', VideoController::class);
-Route::resource('roles', RoleController::class);
+Route::get('/videos/{id}/edit', 'VideoController@edit')->name('videos.edit');
+
+
 
 //AUTH
 

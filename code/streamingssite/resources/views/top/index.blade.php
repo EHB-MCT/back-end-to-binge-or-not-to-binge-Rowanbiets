@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League of Legends Streaming</title>
+    <title>League of Legends Jungle Videos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <!-- Voeg extra CSS-bestanden toe voor aanvullende stijlen -->
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.93);
@@ -129,14 +129,40 @@
     </div>
 </nav>
 
+<h1>Top Tier List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Champion Name</th>
+        <th>Tier</th>
+        <th>Win Rate</th>
+        <th>Pick Rate</th>
+        <th>Ban Rate</th>
+        <th>Games Played</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($topChampions as $champion)
+        <tr>
+            <td>{{ $champion->champion_name }}</td>
+            <td>{{ $champion->tier }}</td>
+            <td>{{ $champion->win_rate }}%</td>
+            <td>{{ $champion->pick_rate }}%</td>
+            <td>{{ $champion->ban_rate }}%</td>
+            <td>{{ $champion->games_played }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
 <!-- Content sectie -->
 <div class="container mt-4">
     <div class="row">
-        <!-- Video's sectie -->
         <div class="col-md-12">
-            <h2>Welcome To Summoners Rift!</h2>
+            <h2>Welcome to the Top Lane!</h2>
             <div class="row">
-                @foreach($videos as $video)
+                @foreach($topVideos as $video)
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>

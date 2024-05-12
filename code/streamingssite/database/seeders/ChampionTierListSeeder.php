@@ -28,17 +28,18 @@ class ChampionTierListSeeder extends Seeder
         ];
 
         $jungleChampions = [
-            ['role' => 'Top', 'champion_name' => 'Dr. Mundo', 'tier' => 'S', 'win_rate' => 52.9, 'pick_rate' => 4.1, 'ban_rate' => 3.0, 'games_played' => 11029],
-            ['role' => 'Top', 'champion_name' => 'Yorick', 'tier' => 'S', 'win_rate' => 52.7, 'pick_rate' => 4.5, 'ban_rate' => 4.7, 'games_played' => 12050],
-            ['role' => 'Top', 'champion_name' => 'Trundle', 'tier' => 'S', 'win_rate' => 52.5, 'pick_rate' => 5.0, 'ban_rate' => 4.3, 'games_played' => 13420],
-            ['role' => 'Top', 'champion_name' => 'Nasus', 'tier' => 'S', 'win_rate' => 52.4, 'pick_rate' => 5.7, 'ban_rate' => 3.9, 'games_played' => 15378],
-            ['role' => 'Top', 'champion_name' => 'Mordekaiser', 'tier' => 'S', 'win_rate' => 52.3, 'pick_rate' => 8.7, 'ban_rate' => 16.6, 'games_played' => 23501],
-            ['role' => 'Top', 'champion_name' => 'Warwick', 'tier' => 'A', 'win_rate' => 52.3, 'pick_rate' => 1.4, 'ban_rate' => 3.2, 'games_played' => 3834],
-            ['role' => 'Top', 'champion_name' => 'Tahm Kench', 'tier' => 'A', 'win_rate' => 52.2, 'pick_rate' => 3.4, 'ban_rate' => 2.0, 'games_played' => 9142],
-            ['role' => 'Top', 'champion_name' => 'Kayle', 'tier' => 'A', 'win_rate' => 52.1, 'pick_rate' => 4.9, 'ban_rate' => 1.3, 'games_played' => 13311],
-            ['role' => 'Top', 'champion_name' => 'Urgot', 'tier' => 'A', 'win_rate' => 51.7, 'pick_rate' => 3.4, 'ban_rate' => 1.2, 'games_played' => 9149],
-            ['role' => 'Top', 'champion_name' => 'Sett', 'tier' => 'A', 'win_rate' => 51.6, 'pick_rate' => 7.2, 'ban_rate' => 2.1, 'games_played' => 19312],
+            ['role' => 'Jungle', 'champion_name' => 'Lee Sin', 'tier' => 'S', 'win_rate' => 52.9, 'pick_rate' => 14.1, 'ban_rate' => 10.0, 'games_played' => 22345],
+            ['role' => 'Jungle', 'champion_name' => 'Kha\'Zix', 'tier' => 'S', 'win_rate' => 52.7, 'pick_rate' => 11.5, 'ban_rate' => 8.7, 'games_played' => 20123],
+            ['role' => 'Jungle', 'champion_name' => 'Rengar', 'tier' => 'S', 'win_rate' => 52.5, 'pick_rate' => 10.0, 'ban_rate' => 7.5, 'games_played' => 18234],
+            ['role' => 'Jungle', 'champion_name' => 'Nunu & Willump', 'tier' => 'S', 'win_rate' => 52.4, 'pick_rate' => 8.9, 'ban_rate' => 5.3, 'games_played' => 16543],
+            ['role' => 'Jungle', 'champion_name' => 'Graves', 'tier' => 'S', 'win_rate' => 52.3, 'pick_rate' => 9.5, 'ban_rate' => 4.1, 'games_played' => 17321],
+            ['role' => 'Jungle', 'champion_name' => 'Ekko', 'tier' => 'A', 'win_rate' => 52.1, 'pick_rate' => 7.3, 'ban_rate' => 6.2, 'games_played' => 14123],
+            ['role' => 'Jungle', 'champion_name' => 'Elise', 'tier' => 'A', 'win_rate' => 52.0, 'pick_rate' => 6.5, 'ban_rate' => 3.9, 'games_played' => 12345],
+            ['role' => 'Jungle', 'champion_name' => 'Fiddlesticks', 'tier' => 'A', 'win_rate' => 51.9, 'pick_rate' => 8.7, 'ban_rate' => 2.5, 'games_played' => 15234],
+            ['role' => 'Jungle', 'champion_name' => 'Kayn', 'tier' => 'A', 'win_rate' => 51.8, 'pick_rate' => 5.9, 'ban_rate' => 3.1, 'games_played' => 11234],
+            ['role' => 'Jungle', 'champion_name' => 'Hecarim', 'tier' => 'A', 'win_rate' => 51.7, 'pick_rate' => 6.7, 'ban_rate' => 4.3, 'games_played' => 13245],
         ];
+
 
         $midChampions = [
             ['role' => 'Mid', 'champion_name' => 'Zed', 'tier' => 'S', 'win_rate' => 52.9, 'pick_rate' => 8.1, 'ban_rate' => 12.3, 'games_played' => 40231],
@@ -78,7 +79,6 @@ class ChampionTierListSeeder extends Seeder
             ['role' => 'Support', 'champion_name' => 'Morgana', 'tier' => 'A', 'win_rate' => 52.0, 'pick_rate' => 9.1, 'ban_rate' => 6.1, 'games_played' => 41123],
             ['role' => 'Support', 'champion_name' => 'Nami', 'tier' => 'A', 'win_rate' => 51.9, 'pick_rate' => 7.5, 'ban_rate' => 3.4, 'games_played' => 33128],
         ];
-
         // Voeg top champions toe
         foreach ($topChampions as $champion) {
             ChampionTierList::create($champion);

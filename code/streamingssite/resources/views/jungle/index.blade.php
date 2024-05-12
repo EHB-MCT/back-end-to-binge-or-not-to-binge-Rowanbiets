@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League of Legends Streaming</title>
+    <title>League of Legends Jungle Videos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <!-- Voeg extra CSS-bestanden toe voor aanvullende stijlen -->
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.93);
@@ -65,7 +65,7 @@
 <!-- Navigatiebalk -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('videos.index') }}">
+        <a class="navbar-brand" href="{{ route('videos.index', ['role' => 'Jungle']) }}">
             <img src="/css/images/League%20of%20Legends.png" alt="League Guiders Logo" width="100" height="80">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-right: 20px;">
@@ -76,19 +76,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" style="margin-right: 100px;">
-                <a class="nav-link" href="{{ route('top.index') }}">Top</a>
+                <a class="nav-link" href="{{ route('videos.index', ['role' => 'Top']) }}">Top</a>
             </li>
             <li class="nav-item" style="margin-right: 100px;">
-                <a class="nav-link" href="{{ route('jungle.index') }}">Jungle</a>
+                <a class="nav-link" href="{{ route('videos.index', ['role' => 'Jungle']) }}">Jungle</a>
             </li>
             <li class="nav-item" style="margin-right: 100px;">
-                <a class="nav-link" href="{{ route('mid.index') }}">Mid</a>
+                <a class="nav-link" href="{{ route('videos.index', ['role' => 'Mid']) }}">Mid</a>
             </li>
             <li class="nav-item" style="margin-right: 100px;">
-                <a class="nav-link" href="{{ route('adc.index') }}">ADC</a>
+                <a class="nav-link" href="{{ route('videos.index', ['role' => 'ADC']) }}">ADC</a>
             </li>
             <li class="nav-item" style="margin-right: 100px;">
-                <a class="nav-link" href="{{ route('support.index') }}">Support</a>
+                <a class="nav-link" href="{{ route('videos.index', ['role' => 'Support']) }}">Support</a>
             </li>
 
             <li class="nav-item" style="margin-right: 140px;">
@@ -134,19 +134,9 @@
     <div class="row">
         <!-- Video's sectie -->
         <div class="col-md-12">
-            <h2>Welcome To Summoners Rift!</h2>
+            <h2>League of Legends Jungle Videos</h2>
             <div class="row">
-                @foreach($videos as $video)
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $video->title }}</h5>
-                                <p class="card-text">{{ $video->description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                <!-- Hier kunnen jungle video's worden weergegeven -->
             </div>
         </div>
     </div>
