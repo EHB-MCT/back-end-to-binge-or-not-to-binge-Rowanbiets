@@ -129,7 +129,7 @@
     </div>
 </nav>
 
-<h1>Top 10 Jungle Champions</h1>
+<h1>Top 10 mid Champions</h1>
 
 <table>
     <thead>
@@ -143,7 +143,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($jungleChampions as $champion)
+    @foreach($midChampions as $champion)
         <tr>
             <td>{{ $champion->champion_name }}</td>
             <td>{{ $champion->tier }}</td>
@@ -161,9 +161,9 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h2>Welcome in the jungle!</h2>
+            <h2>Welcome to the mid lane!</h2>
             <div class="row">
-                @foreach($jungleVideos as $video)
+                @foreach($midVideos as $video)
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>

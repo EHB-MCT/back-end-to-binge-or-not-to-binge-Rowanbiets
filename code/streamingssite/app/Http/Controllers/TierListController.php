@@ -17,28 +17,29 @@ class TierListController extends Controller
     }
 
 
-    public function jungle()
+    public function showJungleTierlist()
     {
         $jungleTierList = ChampionTierList::where('role', 'Jungle')->get();
         return view('jungle', compact('jungleTierList'));
     }
 
-    public function mid()
+    public function showMidTierlist()
     {
         $midTierList = ChampionTierList::where('role', 'Mid')->get();
         return view('mid', compact('midTierList'));
     }
 
-    public function adc()
+    public function showAdcTierlist()
     {
         $adcTierList = ChampionTierList::where('role', 'ADC')->get();
         return view('adc', compact('adcTierList'));
     }
 
-    public function support()
+    public function showSupportTierlist()
     {
         $supportTierList = ChampionTierList::where('role', 'Support')->get();
         return view('support', compact('supportTierList'));
     }
 }
+
 

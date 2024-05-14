@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChampionTierList;
 use Illuminate\Http\Request;
 use App\Models\Video;
 
 class SupportController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $videos = Video::where('role', 'Support')->get();
-        return view('support.index', compact('videos'));
-    }
+        // Filter videos voor de Top-lane
+        $supportVideos = Video::where('role', 'Support')->get();
 
-    // Andere methoden kunnen worden toegevoegd indien nodig...
+        // Haal de tierlist op voor de Top-lane
+        $supportChampions = ChampionTierList::where('role', 'Support')->orderBy('win_rate', 'desc')->limit(10)->get();
+
+        return view('support.index', compact('supportVideos', 'supportChampions'));
+
+
+    }
 }

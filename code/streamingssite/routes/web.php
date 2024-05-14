@@ -14,11 +14,10 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TopController;
 
 
-// Route voor het weergeven van de top champions
-Route::get('/top', [TopController::class, 'index'])->name('top.index');
 
 
 //Routes voor de Roles pagina's
+
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::get('/jungle', [JungleController::class, 'index'])->name('jungle.index');
 Route::get('/mid', [MidController::class, 'index'])->name('mid.index');
