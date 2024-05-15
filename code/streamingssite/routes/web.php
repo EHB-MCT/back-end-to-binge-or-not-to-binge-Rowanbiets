@@ -12,9 +12,7 @@ use App\Http\Controllers\MidController;
 use App\Http\Controllers\ADCController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TopController;
-
-
-
+use App\Http\Controllers\FavoriteVideosController;
 
 //Routes voor de Roles pagina's
 
@@ -24,10 +22,19 @@ Route::get('/mid', [MidController::class, 'index'])->name('mid.index');
 Route::get('/adc', [ADCController::class, 'index'])->name('adc.index');
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
-
 // Definieer de resource-routes voor video's en rollen
 Route::resource('videos', VideoController::class);
 Route::get('/videos/{id}/edit', 'VideoController@edit')->name('videos.edit');
+
+// Favorieten routes (bijgewerkt)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/favorites', [FavoriteVideosController::class, 'index'])->name('favorite.index');
+    Route::post('/videos/{video}/favorite', [FavoriteVideosController::class, 'addToFavorites'])->name('videos.favorite'); // POST-verzoek om video aan favorieten toe te voegen
+    Route::get('/videos/favorites', [FavoriteVideosController::class, 'viewFavorites'])->name('videos.favorites');
+    Route::delete('/videos/{video}/favorite', [FavoriteVideosController::class, 'removeFromFavorites'])->name('videos.unfavorite');
+});
+
+
 
 
 
@@ -52,9 +59,6 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-
-
 // De rootroute kan apart worden gedefinieerd
-Route::get('/', [VideoController::class, 'index'])
-    ->name('welcome');
+Route::get('/', [VideoController::class, 'index'])->name('welcome');
 

@@ -67,16 +67,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
-                                <div class="col-md-6">
-                                    <select id="role" class="form-control" name="role" required>
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                            </div>
 
 
                         </form>

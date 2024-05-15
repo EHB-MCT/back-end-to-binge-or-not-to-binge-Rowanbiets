@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League of Legends Streaming</title>
+    <title>Favorieten</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/f3a4fcaa05.js" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         body {
@@ -58,6 +61,66 @@
         }
         .card-text {
             color: #cccccc;
+        }
+
+        /* Stijlen voor de legende */
+        .legend {
+            margin-top: 30px;
+            margin-left: 10%;
+           display: block;
+        }
+
+        .legend-title {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .legend-items {
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+
+        .legend-color2 {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .legend-text {
+            font-size: 14px;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .legend-percentage {
+            font-size: 14px;
+            color: white;
+        }
+
+        .legend-bar-container {
+            background-color: #f1f1f1; /* Default background color for the container */
+            height: 16px;
+            width: 50%;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .legend-bar {
+            display: flex;
+            height: 100%;
+        }
+
+        .legend-color {
+            height: 100%;
         }
 
     </style>
@@ -131,22 +194,45 @@
     </div>
 </nav>
 
-<!-- Content sectie -->
+<div class="legend">
+    <h4 class="legend-title">Roles:</h4>
+    <div class="legend-bar-container">
+        <div class="legend-bar">
+            @foreach ($rolePercentages as $role => $percentage)
+                <div class="legend-color" style="width: {{ $percentage }}%; background-color: {{ App\Http\Controllers\FavoriteVideosController::getColorForRole($role) }}"></div>
+            @endforeach
+        </div>
+    </div>
+    <div class="legend-items">
+        @foreach ($rolePercentages as $role => $percentage)
+            <div class="legend-item">
+                <div class="legend-color2" style="background-color: {{ App\Http\Controllers\FavoriteVideosController::getColorForRole($role) }}"></div>
+                <div class="legend-text">{{ ucfirst($role) }}</div>
+                <div class="legend-percentage">{{ $percentage }}%</div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
 <div class="container mt-4">
     <div class="row">
-        <!-- Video's sectie -->
+        <!-- Favorieten sectie -->
         <div class="col-md-12">
-            <h2>Welcome To Summoners Rift!</h2>
-            <div class="row">
-                @foreach($videos as $video)
+            <h2>Favorieten</h2>
+            <div id="favorites-list" class="row">
+                <!-- Favorieten worden hier weergegeven -->
+                @foreach ($favoriteVideos as $video)
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
-                            <button class="btn btn-primary" onclick="addToFavorites({{ $video->id }})">Like</button>
+                            <button class="btn btn-danger mt-3" onclick="removeFromFavorites({{ $video->id }})">Verwijderen uit favorieten</button>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $video->title }}</h5>
-                                <p class="card-text">{{ $video->description }}</p>
-                            </div>
+                            <h5 class="card-title">{{ $video->title }}</h5>
+                            <p class="card-text">{{ $video->description }}</p>
+
+
+                        </div>
                         </div>
                     </div>
                 @endforeach
@@ -154,28 +240,31 @@
         </div>
     </div>
 </div>
+
+
+
 <script>
-// Functie om een video aan favorieten toe te voegen
-function addToFavorites(videoId) {
-// Controleer of de gebruiker is ingelogd
-@auth
-    // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
-    axios.post(`/videos/${videoId}/favorite`)
-    .then(response => {
-    // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
-    alert('Video is toegevoegd aan favorieten!');
-    // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
-    loadFavorites();
-    })
-    .catch(error => {
-    // Geef een foutmelding weer als er een fout optreedt
-    console.error('Er is een fout opgetreden bij het toevoegen aan favorieten:', error);
-    });
-@else
-    // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
-    window.location.href = "{{ route('login') }}";
-@endauth
-}
+    // Functie om een video uit favorieten te verwijderen
+    function removeFromFavorites(videoId) {
+        // Controleer of de gebruiker is ingelogd
+        @auth
+        // Maak een AJAX-verzoek om de video uit favorieten te verwijderen
+        axios.delete(`/videos/${videoId}/favorite`)
+            .then(response => {
+                // Geef feedback aan de gebruiker dat de video uit favorieten is verwijderd
+                alert('Video is verwijderd uit favorieten!');
+                // Laad de favorieten opnieuw nadat een video uit favorieten is verwijderd
+                loadFavorites();
+            })
+            .catch(error => {
+                // Geef een foutmelding weer als er een fout optreedt
+                console.error('Er is een fout opgetreden bij het verwijderen uit favorieten:', error);
+            });
+        @else
+        // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
+        window.location.href = "{{ route('login') }}";
+        @endauth
+    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

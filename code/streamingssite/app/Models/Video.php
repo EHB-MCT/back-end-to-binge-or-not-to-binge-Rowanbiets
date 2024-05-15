@@ -14,6 +14,11 @@ class Video extends Model
         return $this->hasOne(ChampionTierList::class);
     }
 
+    public function favoritedByUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_video_favorites')->withTimestamps();
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);

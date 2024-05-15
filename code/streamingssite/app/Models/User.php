@@ -6,11 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
@@ -42,25 +43,14 @@ class User extends Authenticatable
     ];
 
     /**
-     * Assign the role to the user.
-     *
-     * @param string $role
-     * @return void
+     * Get the videos that the user has favorited.
      */
-    public function assignRole(string $role): void
+    public function favorites()
     {
-        // Assign the role based on the provided role parameter
-        if ($role === 'admin') {
-            $this->admin()->create();
-        }
+        return $this->belongsToMany(Video::class, 'user_video_favorites', 'user_id', 'video_id')->withTimestamps();
     }
-
-    /**
-     * Get the admin record associated with the user.
-     */
-    public function admin()
+    public function favoriteVideos(): BelongsToMany
     {
-        return $this->hasOne(Admin::class);
+        return $this->belongsToMany(Video::class, 'user_video_favorites')->withTimestamps();
     }
 }
-
