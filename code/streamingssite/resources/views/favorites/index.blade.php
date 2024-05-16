@@ -9,7 +9,7 @@
     <title>Favorieten</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="icon" href="{{ asset('/css/images/favicon-32x32.png') }}" type="image/x-icon">
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.93);
@@ -195,7 +195,7 @@
 </nav>
 
 <div class="legend">
-    <h4 class="legend-title">Roles:</h4>
+    <h4 class="legend-title">Favorite Roles:</h4>
     <div class="legend-bar-container">
         <div class="legend-bar">
             @foreach ($rolePercentages as $role => $percentage)
@@ -265,6 +265,7 @@
         window.location.href = "{{ route('login') }}";
         @endauth
     }
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

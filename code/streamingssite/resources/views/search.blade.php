@@ -136,23 +136,16 @@
     <div class="row">
         <div class="col-md-12">
             <h2>Welcome To Summoners Rift!</h2>
+            <!-- Zoekbalk -->
             <form action="{{ route('search') }}" method="GET">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control " placeholder="Search videos..." name="query">
+                    <input type="text" class="form-control" placeholder="Search videos..." name="query">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-<!-- Content sectie -->
-<div class="container mt-4">
-    <div class="row">
-        <!-- Video's sectie -->
-        <div class="col-md-12">
-
+            <!-- Zoekresultaten -->
             <div class="row">
                 @foreach($videos as $video)
                     <div class="col-md-4 mb-4">
@@ -170,28 +163,29 @@
         </div>
     </div>
 </div>
+
 <script>
-// Functie om een video aan favorieten toe te voegen
-function addToFavorites(videoId) {
+    // Functie om een video aan favorieten toe te voegen
+    function addToFavorites(videoId) {
 // Controleer of de gebruiker is ingelogd
-@auth
-    // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
-    axios.post(`/videos/${videoId}/favorite`)
-    .then(response => {
-    // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
-    alert('Video is toegevoegd aan favorieten!');
-    // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
-    loadFavorites();
-    })
-    .catch(error => {
-    // Geef een foutmelding weer als er een fout optreedt
-    console.error('Er is een fout opgetreden bij het toevoegen aan favorieten:', error);
-    });
-@else
-    // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
-    window.location.href = "{{ route('login') }}";
-@endauth
-}
+        @auth
+        // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
+        axios.post(`/videos/${videoId}/favorite`)
+            .then(response => {
+                // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
+                alert('Video is toegevoegd aan favorieten!');
+                // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
+                loadFavorites();
+            })
+            .catch(error => {
+                // Geef een foutmelding weer als er een fout optreedt
+                console.error('Er is een fout opgetreden bij het toevoegen aan favorieten:', error);
+            });
+        @else
+        // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
+        window.location.href = "{{ route('login') }}";
+        @endauth
+    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -200,3 +194,5 @@ function addToFavorites(videoId) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

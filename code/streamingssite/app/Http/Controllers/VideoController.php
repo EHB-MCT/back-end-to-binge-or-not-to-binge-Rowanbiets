@@ -101,5 +101,16 @@ class VideoController extends Controller
         return redirect()->route('videos.index')
             ->with('success', 'Video deleted successfully.');
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $videos = Video::where('title', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->orWhere('role', 'like', '%' . $query . '%')
+            ->get();
+
+        return view('search', compact('videos', 'query'));
+    }
 
 }

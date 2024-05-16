@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>League of Legends Jungle Videos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Voeg extra CSS-bestanden toe voor aanvullende stijlen -->
+    <link rel="icon" href="{{ asset('/css/images/favicon-32x32.png') }}" type="image/x-icon">
+
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.93);
@@ -58,11 +59,49 @@
         .card-text {
             color: #cccccc;
         }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 120px;
+
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        th {
+            background-color: #0b0c10;
+        }
+        tr:nth-child(even) {
+            background-color: #0b0c10;
+        }
+        tr:nth-child(odd) {
+            background-color: #1f2833;
+        }
+        h3 {
+            text-align: left;
+            margin-top: 50px;
+            margin-left: 120px;
+            font-family: "Impact";
+
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-family: "Impact";
+        }
+
+
     </style>
 </head>
 <body>
 
 <!-- Navigatiebalk -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container">
         <a class="navbar-brand" href="{{ route('videos.index') }}">
@@ -129,9 +168,12 @@
     </div>
 </nav>
 
-<h1>Top Tier List</h1>
+<h1>Welcome to the top lane!</h1>
+
+<h3> Tier List</h3>
 
 <table>
+
     <thead>
     <tr>
         <th>Champion Name</th>
@@ -160,7 +202,7 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h2>Welcome to the Top Lane!</h2>
+            <h2>Trending</h2>
             <div class="row">
                 @foreach($topVideos as $video)
                     <div class="col-md-4 mb-4">

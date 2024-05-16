@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>League of Legends Jungle Videos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="icon" href="{{ asset('/css/images/favicon-32x32.png') }}" type="image/x-icon">
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.93);
@@ -19,6 +19,7 @@
             text-align: center;
             padding: 20px;
         }
+
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
         }
@@ -58,6 +59,42 @@
         .card-text {
             color: #cccccc;
         }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 120px;
+
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        th {
+            background-color: #0b0c10;
+        }
+        tr:nth-child(even) {
+            background-color: #0b0c10;
+        }
+        tr:nth-child(odd) {
+            background-color: #1f2833;
+        }
+        h3 {
+            text-align: left;
+            margin-top: 50px;
+            margin-left: 120px;
+            font-family: "Impact";
+
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-family: "Impact";
+        }
+
+
     </style>
 </head>
 <body>
@@ -92,7 +129,7 @@
             </li>
 
             <li class="nav-item" style="margin-right: 140px;">
-                <a class="nav-link" href="#">Favorieten</a>
+                <a class="nav-link" href="{{ route('favorite.index') }}">Favorieten</a>
             </li>
         </ul>
 
@@ -128,8 +165,8 @@
         </ul>
     </div>
 </nav>
-
-<h1>Top 10 mid Champions</h1>
+<h1>Welcome to Support!</h1>
+<h3>Tier List</h3>
 
 <table>
     <thead>
@@ -161,12 +198,13 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h2>Welcome to the mid lane!</h2>
+            <h2>Trending</h2>
             <div class="row">
                 @foreach($supportVideos as $video)
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
+                            <button class="btn btn-primary small-btn" onclick="addToFavorites({{ $video->id }})">Like</button>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $video->title }}</h5>
                                 <p class="card-text">{{ $video->description }}</p>
@@ -179,6 +217,31 @@
     </div>
 </div>
 
+<script>
+    // Functie om een video aan favorieten toe te voegen
+    function addToFavorites(videoId) {
+// Controleer of de gebruiker is ingelogd
+        @auth
+        // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
+        axios.post(`/videos/${videoId}/favorite`)
+            .then(response => {
+                // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
+                alert('Video is toegevoegd aan favorieten!');
+                // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
+                loadFavorites();
+            })
+            .catch(error => {
+                // Geef een foutmelding weer als er een fout optreedt
+                console.error('Er is een fout opgetreden bij het toevoegen aan favorieten:', error);
+            });
+        @else
+        // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
+        window.location.href = "{{ route('login') }}";
+        @endauth
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
