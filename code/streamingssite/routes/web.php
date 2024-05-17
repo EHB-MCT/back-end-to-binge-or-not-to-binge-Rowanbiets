@@ -9,7 +9,7 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\JungleController;
 use App\Http\Controllers\MidController;
-use App\Http\Controllers\ADCController;
+use App\Http\Controllers\AdcController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\FavoriteVideosController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\FavoriteVideosController;
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::get('/jungle', [JungleController::class, 'index'])->name('jungle.index');
 Route::get('/mid', [MidController::class, 'index'])->name('mid.index');
-Route::get('/adc', [ADCController::class, 'index'])->name('adc.index');
+Route::get('/adc', [AdcController::class, 'index'])->name('adc.index');
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
 // Definieer de resource-routes voor video's en rollen
