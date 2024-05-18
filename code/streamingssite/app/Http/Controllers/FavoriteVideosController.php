@@ -72,7 +72,7 @@ class FavoriteVideosController extends Controller
             } else {
                 // Voeg video toe aan favorieten
                 $user->favorites()->attach($video->id);
-                return response()->json(['success' => true, 'video' => $video]);
+                return redirect()->back()->with('success', 'Video is succesvol toegevoegd aan favorieten!');
             }
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Er is een fout opgetreden bij het verwerken van het verzoek. Probeer het later opnieuw.'], 500);
