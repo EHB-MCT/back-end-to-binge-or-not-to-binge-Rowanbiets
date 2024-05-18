@@ -6,7 +6,7 @@ use App\Models\ChampionTierList;
 use Illuminate\Http\Request;
 use App\Models\Video;
 
-class ADCController extends Controller
+class AdcController extends Controller
 {
     public function index(Request $request)
     {
