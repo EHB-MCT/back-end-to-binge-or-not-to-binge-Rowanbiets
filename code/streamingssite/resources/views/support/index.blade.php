@@ -204,7 +204,11 @@
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
-                            <button class="btn btn-primary small-btn" onclick="addToFavorites({{ $video->id }})">Like</button>
+                            <form action="{{ route('videos.favorite', ['video' => $video->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Like</button>
+                            </form>
+
                             <div class="card-body">
                                 <h5 class="card-title">{{ $video->title }}</h5>
                                 <p class="card-text">{{ $video->description }}</p>
@@ -218,30 +222,16 @@
 </div>
 
 <script>
-    // Functie om een video aan favorieten toe te voegen
-    function addToFavorites(videoId) {
-// Controleer of de gebruiker is ingelogd
-        @auth
-        // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
-        axios.post(`/videos/${videoId}/favorite`)
-            .then(response => {
-                // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
-                alert('Video is toegevoegd aan favorieten!');
-                // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
-                loadFavorites();
-            })
-            .catch(error => {
-                // Geef een foutmelding weer als er een fout optreedt
-                console.error('Er is een fout opgetreden bij het toevoegen aan favorieten:', error);
-            });
-        @else
+    // Functie om te controleren of de gebruiker is ingelogd
+    function checkAuthAndSubmitForm() {
+        // Controleer of de gebruiker is ingelogd
+        @guest
         // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
         window.location.href = "{{ route('login') }}";
-        @endauth
+        @endguest
     }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
