@@ -131,7 +131,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container">
         <a class="navbar-brand" href="{{ route('videos.index') }}">
-            <img src="/css/images/League%20of%20Legends.png" alt="League Guiders Logo" width="100" height="80">
+            <img src="{{ asset('/css/images/League_of_Legends.png') }}" alt="League Guiders Logo" width="100" height="80">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-right: 20px;">
             <span class="navbar-toggler-icon"></span>
