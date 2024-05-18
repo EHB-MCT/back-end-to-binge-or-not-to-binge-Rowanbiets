@@ -226,49 +226,39 @@
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <iframe width="100%" height="200" src="{{ $video->video_url }}" frameborder="0" allowfullscreen></iframe>
-                            <button class="btn btn-danger mt-3" onclick="removeFromFavorites({{ $video->id }})">Verwijderen uit favorieten</button>
+                            <!-- Verwijder knop -->
+                            <form action="{{ route('videos.unfavorite', ['video' => $video->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mt-3">Verwijderen uit favorieten</button>
+                            </form>
                             <div class="card-body">
-                            <h5 class="card-title">{{ $video->title }}</h5>
-                            <p class="card-text">{{ $video->description }}</p>
-
-
-                        </div>
+                                <h5 class="card-title">{{ $video->title }}</h5>
+                                <p class="card-text">{{ $video->description }}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
     </div>
 </div>
 
 
-
 <script>
-    // Functie om een video uit favorieten te verwijderen
-    function removeFromFavorites(videoId) {
+    // Functie om te controleren of de gebruiker is ingelogd
+    function checkAuthAndSubmitForm() {
         // Controleer of de gebruiker is ingelogd
-        @auth
-        // Maak een AJAX-verzoek om de video uit favorieten te verwijderen
-        axios.delete(`/videos/${videoId}/favorite`)
-            .then(response => {
-                // Geef feedback aan de gebruiker dat de video uit favorieten is verwijderd
-                alert('Video is verwijderd uit favorieten!');
-                // Laad de favorieten opnieuw nadat een video uit favorieten is verwijderd
-                
-            })
-            .catch(error => {
-                // Geef een foutmelding weer als er een fout optreedt
-                console.error('Er is een fout opgetreden bij het verwijderen uit favorieten:', error);
-            });
-        @else
+        @guest
         // Als de gebruiker niet is ingelogd, stuur hem/haar naar het inlogscherm
         window.location.href = "{{ route('login') }}";
-        @endauth
+        @endguest
     }
-
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

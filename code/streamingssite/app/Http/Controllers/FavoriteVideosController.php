@@ -30,7 +30,7 @@ class FavoriteVideosController extends Controller
     public function removeFromFavorites(Request $request, Video $video)
     {
 
-        header('Access-Control-Allow-Origin: *');
+
         $user = auth()->user();
 
         if (!$user) {
@@ -42,7 +42,7 @@ class FavoriteVideosController extends Controller
             if ($user->favorites()->where('video_id', $video->id)->exists()) {
                 // Verwijder de video uit favorieten
                 $user->favorites()->detach($video->id);
-                return response()->json(['success' => true, 'video' => $video]);
+                return redirect()->route('favorite.index')->with('success', 'Video is succesvol verwijderd uit favorieten!');
             } else {
                 // Als de video niet in de favorieten van de gebruiker staat, geef een foutmelding terug
                 return response()->json(['success' => false, 'message' => 'Deze video staat niet in je favorieten.'], 404);
