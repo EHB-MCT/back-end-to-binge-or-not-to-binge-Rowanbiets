@@ -29,6 +29,8 @@ class FavoriteVideosController extends Controller
 
     public function removeFromFavorites(Request $request, Video $video)
     {
+
+        header('Access-Control-Allow-Origin: *');
         $user = auth()->user();
 
         if (!$user) {
