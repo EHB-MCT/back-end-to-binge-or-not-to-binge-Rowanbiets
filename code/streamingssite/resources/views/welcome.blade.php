@@ -172,7 +172,9 @@
 </div>
 <script>
 // Functie om een video aan favorieten toe te voegen
+
 function addToFavorites(videoId) {
+
 // Controleer of de gebruiker is ingelogd
 @auth
     // Maak een AJAX-verzoek om de video aan favorieten toe te voegen
@@ -180,8 +182,7 @@ function addToFavorites(videoId) {
     .then(response => {
     // Geef feedback aan de gebruiker dat de video aan favorieten is toegevoegd
     alert('Video is toegevoegd aan favorieten!');
-    // Laad de favorieten opnieuw nadat een video aan favorieten is toegevoegd
-    loadFavorites();
+
     })
     .catch(error => {
     // Geef een foutmelding weer als er een fout optreedt

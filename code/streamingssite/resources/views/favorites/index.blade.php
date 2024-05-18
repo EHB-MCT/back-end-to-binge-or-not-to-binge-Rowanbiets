@@ -254,7 +254,7 @@
                 // Geef feedback aan de gebruiker dat de video uit favorieten is verwijderd
                 alert('Video is verwijderd uit favorieten!');
                 // Laad de favorieten opnieuw nadat een video uit favorieten is verwijderd
-                loadFavorites();
+                
             })
             .catch(error => {
                 // Geef een foutmelding weer als er een fout optreedt
