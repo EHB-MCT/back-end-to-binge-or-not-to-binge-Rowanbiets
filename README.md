@@ -25,6 +25,8 @@ Relationships : - https://docs.google.com/presentation/d/1H-AoNe8KofsLuflZzoKWeD
 
 Authentication : - https://docs.google.com/presentation/d/1_z_vrsLmxERyMPOnsv7dEmiYzmNhvYPfBzwWlOQy_pA/edit#slide=id.p
                  - https://ehb.instructure.com/courses/33609/pages/basic-auth?module_item_id=533324
+                 
+Check authentication : - https://stackoverflow.com/questions/66361923/window-location-href-is-not-redirecting-html-page
 
 Deployment : - https://ehb.instructure.com/courses/33609/pages/deploying-on-linux-using-school-hosting?module_item_id=533331
 
