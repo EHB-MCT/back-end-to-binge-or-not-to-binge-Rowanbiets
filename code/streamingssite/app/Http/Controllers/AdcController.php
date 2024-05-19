@@ -10,14 +10,14 @@ class AdcController extends Controller
 {
     public function index(Request $request)
     {
-        // Filter videos voor de Jungle-rol
+        // Filter videos voor de ADC-rol
         $adcVideos = Video::where('role', 'ADC')->get();
 
-        // Haal de tierlist op voor de Jungle-rol
+        // Haalt de tierlist op voor de ADC-rol
         $adcChampions = ChampionTierList::where('role', 'ADC')->orderBy('win_rate', 'desc')->limit(10)->get();
 
         return view('ADC.index', compact('adcVideos', 'adcChampions'));
     }
 
-    // Andere methoden kunnen worden toegevoegd indien nodig...
+
 }

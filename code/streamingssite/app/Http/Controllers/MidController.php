@@ -10,10 +10,10 @@ class MidController extends Controller
 {
     public function index(Request $request)
     {
-        // Filter videos voor de Jungle-rol
+        // Filter videos voor de Mid-rol
         $midVideos = Video::where('role', 'Mid')->get();
 
-        // Haal de tierlist op voor de Jungle-rol
+        // Haalt de tierlist op voor de Mid-rol
         $midChampions = ChampionTierList::where('role', 'Mid')->orderBy('win_rate', 'desc')->limit(10)->get();
 
         return view('mid.index', compact('midVideos', 'midChampions'));

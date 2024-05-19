@@ -23,10 +23,11 @@ Route::get('/adc', [AdcController::class, 'index'])->name('adc.index');
 Route::get('/support', [SupportController::class, 'index'])->name('support.index');
 
 // Definieer de resource-routes voor video's en rollen
+
 Route::resource('videos', VideoController::class);
 Route::get('/videos/{id}/edit', 'VideoController@edit')->name('videos.edit');
 
-// Favorieten routes (bijgewerkt)
+// Favorieten routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/favorites', [FavoriteVideosController::class, 'index'])->name('favorite.index');
     Route::post('/videos/{video}/favorite', [FavoriteVideosController::class, 'addToFavorites'])->name('videos.favorite'); // POST-verzoek om video aan favorieten toe te voegen
@@ -59,7 +60,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-// De rootroute kan apart worden gedefinieerd
+// De rootroute
 Route::get('/', [VideoController::class, 'index'])->name('welcome');
 Route::get('/search', [VideoController::class, 'search'])->name('search');
 

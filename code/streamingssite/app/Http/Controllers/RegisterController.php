@@ -23,15 +23,13 @@ class RegisterController extends Controller
         ]);
 
         // Creëer de gebruiker met de juiste rol
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-
-
-        // Redirect de gebruiker naar een bepaalde locatie na registratie
         return redirect()->route('login')->with('success', 'Registratie voltooid! U kunt nu inloggen.');
     }
 }
